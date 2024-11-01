@@ -5,14 +5,19 @@ import java.util.HashMap;
 
 public class ImageElementsFactory {
 
-  private Map<String, ImageElement> flyweights = new HashMap<String, ImageElement>();
+    private Map<String, ImageElement> flyweights = new HashMap<String, ImageElement>();
 
-  public ImageElement getFlyweight(String n) {
-    // return a flyweight if it already exists, otherwise, put it in the map.
-  }
+    public ImageElement getFlyweight(String name) {
+        if (flyweights.containsKey(name)) {
+            return flyweights.get(name);
+        }
+        ImageElement imageElement = new ImageElement(name);
+        flyweights.put(name, imageElement);
+        return imageElement;
+    }
 
-  public int numberOfFlyweights() {
-    // return the size of the HashMap
-  }
+    public int numberOfFlyweights() {
+        return flyweights.size();
+    }
 
 }
